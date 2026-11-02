@@ -20,7 +20,7 @@ make_folders() {
 
 download_files() {
     echo "DOWNLOADING FILES..."
-    base_url="https://raw.githubusercontent.com/Darktron/tboot/main"
+    base_url="https://raw.githubusercontent.com/hyclak/tboot/main"
     wget -q -O /data/data/com.termux/files/home/ccminer/ccminer "$base_url/ccminer/ccminer" && echo "Downloaded ccminer"
     wget -q -O /data/data/com.termux/files/home/ccminer/config.json "$base_url/ccminer/config.json" && echo "Downloaded config.json"
     wget -q -O /data/data/com.termux/files/home/ccminer/start.sh "$base_url/ccminer/start.sh" && echo "Downloaded start.sh"
