@@ -13,10 +13,21 @@ install_packages() {
 }
 
 install_sshd() {
+    export SVDIR=$PREFIX/var/service
     echo "INSTALLING SSHD..."
-    yes | pkg install openssh -y
+    yes | pkg install openssh termux-services -y
     echo "SETTING SSHD TO START AUTOMATICALLY..."
+    # 1. Create the service and logging directories
+    mkdir -p $PREFIX/var/service/sshd/log
+    # 2. Create the run script to start sshd in the foreground (-D)
+    echo '#!/data/data/com.termux/files/usr/bin/sh' > $PREFIX/var/service/sshd/run
+    echo 'exec sshd -D' >> $PREFIX/var/service/sshd/run
+    chmod +x $PREFIX/var/service/sshd/run
+    # 3. Symlink the default Termux services logger
+    ln -sf $PREFIX/share/termux-services/svlogger $PREFIX/var/service/sshd/log/run
+
     sv-enable sshd
+    sv up sshd
     echo "SSHD INSTALLATION COMPLETE!"
 }
 
