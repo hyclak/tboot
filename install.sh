@@ -22,6 +22,10 @@ install_sshd() {
     export SVDIR=$PREFIX/var/service
     echo "INSTALLING SSHD..."
     yes | pkg install openssh -y
+    echo "CONFIGURING AUTHORIZED KEYS..."
+    install -d -m 0700 ~/.ssh
+    echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlWwMqI/U1L0ym99TbCRgfReJoW5Os0OY/iS0HUHmYb mhyclak@controller.reversion.org" > ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/authorized_keys
     echo "SSHD INSTALLATION COMPLETE!"
 }
 
