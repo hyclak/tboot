@@ -1,1 +1,1 @@
-sshd
+sshd -E $PREFIX/var/log/sshd.log
