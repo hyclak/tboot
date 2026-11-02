@@ -46,6 +46,7 @@ set_permissions() {
 main() {
     run_update_and_upgrade
     install_packages
+    install_sshd
     make_folders
     download_files
     set_permissions
