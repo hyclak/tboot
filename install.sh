@@ -9,7 +9,13 @@ run_update_and_upgrade() {
 
 install_packages() {
     echo "INSTALLING DEPENDENCIES..."
-    yes | pkg install libjansson wget nano -y
+    yes | pkg install libcurl libjansson wget nano -y
+}
+
+install_primominer() {
+    echo "INSTALLING PRIMO MINER..."
+    curl -fsSL https://primolab.dev/install.sh | sh
+    echo "PRIMO MINER INSTALLATION COMPLETE!"
 }
 
 install_sshd() {
@@ -47,6 +53,7 @@ set_permissions() {
 main() {
     run_update_and_upgrade
     install_packages
+    install_primominer
     install_sshd
     make_folders
     download_files
