@@ -12,6 +12,14 @@ install_packages() {
     yes | pkg install libjansson wget nano -y
 }
 
+install_sshd() {
+    echo "INSTALLING SSHD..."
+    yes | pkg install openssh -y
+    echo "SETTING SSHD TO START AUTOMATICALLY..."
+    sv-enable sshd
+    echo "SSHD INSTALLATION COMPLETE!"
+}
+
 make_folders() {
     echo "CREATING FOLDERS..."
     mkdir -p /data/data/com.termux/files/home/ccminer
