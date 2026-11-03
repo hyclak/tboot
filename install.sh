@@ -9,7 +9,7 @@ run_update_and_upgrade() {
 
 install_packages() {
     echo "INSTALLING DEPENDENCIES..."
-    yes | pkg install libcurl libjansson tmux wget nano -y
+    yes | pkg install libcurl libjansson python tmux wget nano -y
 }
 
 install_primominer() {
